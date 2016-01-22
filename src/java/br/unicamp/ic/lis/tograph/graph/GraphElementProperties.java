@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.unicamp.ic.lis.tograph.graph.elements;
+package br.unicamp.ic.lis.tograph.graph;
 
 import java.util.LinkedHashMap;
 
@@ -14,8 +14,7 @@ public class GraphElementProperties extends LinkedHashMap<String, Object> {
 	private float valueFloat;
 
 	public GraphElementProperties() {
-		super();
-
+		super();	
 	}
 
 	public GraphElementProperties(String key, Object value) {

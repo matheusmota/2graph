@@ -1,12 +1,11 @@
-package br.unicamp.ic.lis.tograph.builder.concretbuilder.neo4j;
+package br.unicamp.ic.lis.tograph.concretebuilder.neo4j.neo4jrest;
 
+import java.awt.PageAttributes.MediaType;
 import java.net.ConnectException;
 import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-
-import javax.ws.rs.core.MediaType;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -14,17 +13,18 @@ import org.json.simple.parser.JSONParser;
 
 import br.unicamp.ic.lis.tograph.builder.IGraphBuilder;
 import br.unicamp.ic.lis.tograph.graph.GraphElement;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperties;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperty;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphNode;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphRelation;
+import br.unicamp.ic.lis.tograph.graph.GraphElementProperties;
+import br.unicamp.ic.lis.tograph.graph.GraphElementProperty;
+import br.unicamp.ic.lis.tograph.graph.GraphNode;
+import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
+import com.sun.jersey.core.header.MediaTypes;
 
-public class Neo4jRestBuilder implements IGraphBuilder {
+public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 
 	private String serverRootUrl;
 
@@ -36,7 +36,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 	private WebResource webResource;
 	private HTTPBasicAuthFilter httpBasicAuthFilter;
 
-	public Neo4jRestBuilder(String serverRootUrl, String username, String password) {
+	public Neo4jRestConcreteBuilder(String serverRootUrl, String username, String password) {
 		this.httpBasicAuthFilter = new HTTPBasicAuthFilter(username, password);
 		// setting parameters related to neo4j up
 		this.serverRootUrl = serverRootUrl;
@@ -90,7 +90,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		this.webResource = Client.create().resource(entryPoint);
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
-		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).get(ClientResponse.class);
 		if (this.debubMessage)
 			System.out.println(String.format("GET on [%s], status code [%d]", this.serverRootUrl, response.getStatus()));
 
@@ -103,7 +103,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		this.webResource = Client.create().resource(entryPoint);
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
-		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).delete(ClientResponse.class);
 		if (this.debubMessage)
 			System.out.println(String.format("DELETE on [%s], status code [%d]", this.serverRootUrl, response.getStatus()));
 
@@ -118,8 +118,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
 		// POST {arguments} to the node entry point URI
-		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).entity(jason)
-				.post(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).type(MediaTypes.WADL_JSON).entity(jason).post(ClientResponse.class);
 
 		URI location = response.getLocation();
 
@@ -142,8 +141,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		String jason = obj.toJSONString();
 
 		// POST {arguments} to the node entry point URI
-		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).entity(jason)
-				.post(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).type(MediaTypes.WADL_JSON).entity(jason).post(ClientResponse.class);
 
 		URI location = response.getLocation();
 
@@ -160,8 +158,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
 		// POST {arguments} to the node entry point URI
-		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).entity(jason)
-				.put(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).type(MediaTypes.WADL_JSON).entity(jason).put(ClientResponse.class);
 
 		URI location = response.getLocation();
 
@@ -281,7 +278,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		return props;
 	}
 
-	@Override
+	
 	public List<GraphNode> getNodesByProperties(List<GraphElementProperty> properties) throws Exception {
 
 		List<GraphNode> list = new Vector<GraphNode>();
@@ -316,7 +313,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	@Override
+	
 	public List<GraphNode> getNodesByLabel(String label) throws Exception {
 
 		List<GraphNode> list = new Vector<GraphNode>();
@@ -345,7 +342,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	@Override
+	
 	public List<GraphRelation> getRelationsByProperties(List<GraphElementProperty> properties) throws Exception {
 
 		List<GraphRelation> list = new Vector<GraphRelation>();
@@ -379,7 +376,7 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	@Override
+	
 	public List<GraphRelation> getRelationsByLabel(String label) throws Exception {
 
 		List<GraphRelation> list = new Vector<GraphRelation>();
@@ -426,7 +423,6 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		return label;
 	}
 
-	@Override
 	public String getLabel(GraphElement element) throws Exception {
 		String label = null;
 		if (element.getClass() == GraphNode.class) {
@@ -552,11 +548,29 @@ public class Neo4jRestBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	@Override
+	
 	public boolean deleteGraphElement(GraphElement element) throws Exception {
 		if (this.debubMessage)
-			System.out.println(element.getUri() );
+			System.out.println(element.getUri());
 		this.executeDeleteJson(element.getUri() + "", "");
+		return false;
+	}
+
+	@Override
+	public List<String> getLabels(GraphElement element) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addProperties(GraphElement element, GraphElementProperties property) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setroperty(GraphElement element, GraphElementProperty property) throws Exception {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

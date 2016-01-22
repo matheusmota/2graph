@@ -1,23 +1,23 @@
-package br.unicamp.ic.lis.tograph.builder.concretbuilder.virtuoso.rdf;
+package br.unicamp.ic.lis.tograph.concretebuilder.textual;
 
 import java.net.URI;
 import java.util.List;
 
 import br.unicamp.ic.lis.tograph.builder.IGraphBuilder;
 import br.unicamp.ic.lis.tograph.graph.GraphElement;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperties;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperty;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphNode;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphRelation;
+import br.unicamp.ic.lis.tograph.graph.GraphElementProperties;
+import br.unicamp.ic.lis.tograph.graph.GraphElementProperty;
+import br.unicamp.ic.lis.tograph.graph.GraphNode;
+import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 
-public abstract class RDFTriplesBuilder implements IGraphBuilder {
+public abstract class RDFTriplesTextBuilder implements IGraphBuilder {
 
 	private int nodeCounter = 0;
 	private int relCounter = 0;
 
 	private String url;
-
-	public RDFTriplesBuilder(String url) {
+	
+	public RDFTriplesTextBuilder(String url) {
 		this.url = url + "/";
 	}
 
@@ -65,19 +65,19 @@ public abstract class RDFTriplesBuilder implements IGraphBuilder {
 		return null;
 	}
 
-	@Override
+	
 	public List<GraphNode> getNodesByProperties(List<GraphElementProperty> properties) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public List<GraphRelation> getRelationsByProperties(List<GraphElementProperty> properties) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
+	
 	public String getLabel(GraphElement element) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -101,13 +101,12 @@ public abstract class RDFTriplesBuilder implements IGraphBuilder {
 		return null;
 	}
 
-	@Override
+	
 	public List<GraphNode> getNodesByLabel(String label) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public List<GraphRelation> getRelationsByLabel(String label) throws Exception {
 		// TODO Auto-generated method stub
 		return null;

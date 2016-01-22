@@ -1,13 +1,13 @@
 package br.unicamp.ic.lis.tograph.examples;
 
-import br.unicamp.ic.lis.tograph.builder.concretbuilder.neo4j.Neo4jRestBuilder;
+import br.unicamp.ic.lis.tograph.concretebuilder.neo4j.neo4jrest.Neo4jRestConcreteBuilder;
 
 public class GraphCreationExampleUpdates {
 	public static void main(String[] args) throws Exception {
 
 		String serverRootUrl = "http://neo4j.lis.ic.unicamp.br/db/data";
 
-		Neo4jRestBuilder builder = new Neo4jRestBuilder(serverRootUrl, "neo4j", "neo4j");
+		Neo4jRestConcreteBuilder builder = new Neo4jRestConcreteBuilder(serverRootUrl, "neo4j", "neo4j");
 
 		builder.setDebubMessage(true);
 		builder.testServer(true);

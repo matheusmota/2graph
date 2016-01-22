@@ -1,12 +1,12 @@
 /**
  * 
  */
-package br.unicamp.ic.lis.tograph.graph.elements;
+package br.unicamp.ic.lis.tograph.graph;
 
 import java.util.LinkedHashMap;
 
 /**
- * @author matheus
+ * @author Matheus Mota
  *
  */
 public class GraphElementProperty extends LinkedHashMap<String, String> {
@@ -18,14 +18,14 @@ public class GraphElementProperty extends LinkedHashMap<String, String> {
 
 	public GraphElementProperty(String key, String value) {
 		this.isValueFloat = false;
-		this.key = key;
+		this.key = key;	
 		this.value = value;
 	}
 
 	public GraphElementProperty(String key, float value) {
 		this.isValueFloat = true;
 		this.key = key;
-		this.valueFloat= value;
+		this.valueFloat = value;
 	}
 
 	public float getValueFloat() {

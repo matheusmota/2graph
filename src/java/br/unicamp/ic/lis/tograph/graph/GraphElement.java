@@ -4,8 +4,6 @@ import java.net.URI;
 import java.util.List;
 
 import br.unicamp.ic.lis.tograph.builder.IGraphBuilder;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperties;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperty;
 
 public class GraphElement {
 
@@ -16,7 +14,7 @@ public class GraphElement {
 		this.uri = uri;
 		this.builder = builder;
 
-	}
+	}	
 
 	private void setLabel(String label) throws Exception {
 		this.builder.addLabel(this, label);
@@ -32,7 +30,7 @@ public class GraphElement {
 	}
 
 	public String getLabel() throws Exception {
-		return this.builder.getLabel(this);
+		return this.builder.getLabels(this).get(0);
 	}
 
 	public void setProperties(List<GraphElementProperty> properties) throws Exception {

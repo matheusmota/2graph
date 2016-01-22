@@ -1,11 +1,10 @@
-package br.unicamp.ic.lis.tograph.graph.elements;
+package br.unicamp.ic.lis.tograph.graph;
 
 import java.net.URI;
 import java.util.List;
 
 import br.unicamp.ic.lis.tograph.builder.IGraphBuilder;
-import br.unicamp.ic.lis.tograph.graph.GraphElement;
-
+	
 /**
  * @author matheus
  *

@@ -1,24 +1,24 @@
 package br.unicamp.ic.lis.tograph.examples;
 
-import br.unicamp.ic.lis.tograph.builder.concretbuilder.neo4j.Neo4jRestBuilder;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphElementProperty;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphNode;
-import br.unicamp.ic.lis.tograph.graph.elements.GraphRelation;
+import br.unicamp.ic.lis.tograph.concretebuilder.neo4j.neo4jrest.Neo4jRestConcreteBuilder;
+import br.unicamp.ic.lis.tograph.graph.GraphElementProperty;
+import br.unicamp.ic.lis.tograph.graph.GraphNode;
+import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 
 public class GraphCreationExample {
 	public static void main(String[] args) throws Exception {
 
 		String serverRootUrl = "http://neo4j.lis.ic.unicamp.br/db/data";
 
-		Neo4jRestBuilder builder = new Neo4jRestBuilder(serverRootUrl, "neo4j", "neo4j");
+		Neo4jRestConcreteBuilder builder = new Neo4jRestConcreteBuilder(serverRootUrl, "neo4j", "neo4j");
 		// RDFTriplesBuilder builder = new RDFTriplesBuilder(serverRootUrl);
 
-		 builder.setDebubMessage(true);
-		 builder.testServer(true);
+		builder.setDebubMessage(true);
+		builder.testServer(true);
 
 		/**
 		 * Creating Nodes There a few options for creating nodes and for
-		 * creating and adding properties. The folowing examples show the
+		 * creating and adding properties. The following examples show the
 		 * current options
 		 * */
 
