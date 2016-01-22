@@ -10,15 +10,24 @@ import br.unicamp.ic.lis.tograph.graph.GraphElementProperty;
 import br.unicamp.ic.lis.tograph.graph.GraphNode;
 import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 
-public abstract class RDFTriplesTextBuilder implements IGraphBuilder {
+public class RDFTriplesTextBuilder implements IGraphBuilder {
 
 	private int nodeCounter = 0;
 	private int relCounter = 0;
 
 	private String url;
-	
+
 	public RDFTriplesTextBuilder(String url) {
 		this.url = url + "/";
+
+	}
+
+	public void setDebubMessage(boolean flag) {
+
+	}
+
+	public void testServer(boolean flag) {
+
 	}
 
 	@Override
@@ -65,19 +74,16 @@ public abstract class RDFTriplesTextBuilder implements IGraphBuilder {
 		return null;
 	}
 
-	
 	public List<GraphNode> getNodesByProperties(List<GraphElementProperty> properties) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
 	public List<GraphRelation> getRelationsByProperties(List<GraphElementProperty> properties) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
 	public String getLabel(GraphElement element) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -101,7 +107,6 @@ public abstract class RDFTriplesTextBuilder implements IGraphBuilder {
 		return null;
 	}
 
-	
 	public List<GraphNode> getNodesByLabel(String label) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -122,6 +127,24 @@ public abstract class RDFTriplesTextBuilder implements IGraphBuilder {
 	public GraphNode getEndNodeOfRelation(GraphRelation relation) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<String> getLabels(GraphElement element) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addProperties(GraphElement element, GraphElementProperties property) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setroperty(GraphElement element, GraphElementProperty property) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

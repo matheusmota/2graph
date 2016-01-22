@@ -10,7 +10,7 @@ public class GraphCreationSimpleExample {
 		String serverRootUrl = "http://neo4j.lis.ic.unicamp.br/db/data";
 
 		Neo4jRestConcreteBuilder builder = new Neo4jRestConcreteBuilder(serverRootUrl, "neo4j", "neo4j");
-		// RDFTriplesBuilder builder = new RDFTriplesBuilder(serverRootUrl);
+		//RDFTriplesTextBuilder builder = new RDFTriplesTextBuilder(serverRootUrl);
 
 		builder.setDebubMessage(true);
 		builder.testServer(true);
