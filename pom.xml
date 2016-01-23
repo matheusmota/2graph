@@ -4,7 +4,7 @@
   <groupId>br.unicamp.ic.lis.tograph</groupId>
   <artifactId>tograph</artifactId>
   <packaging>jar</packaging>
-  <version>tograph-0.1</version>
+  <version>0.1.2</version>
   <name>tograph</name>
   <url>http://github.com/matheusmota/2graph</url>
   <dependencies>
