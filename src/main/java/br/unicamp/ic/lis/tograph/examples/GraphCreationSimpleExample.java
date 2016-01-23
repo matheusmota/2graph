@@ -16,14 +16,12 @@ public class GraphCreationSimpleExample {
 		builder.testServer(true);
 
 		// /* Creating Nodes */
-		GraphNode n1 = new GraphNode(builder);
-		n1.addLabel("VideoResource");
+		GraphNode n1 = new GraphNode(builder, "VideoResource");
 		n1.addProperty("Idvideo", "1");
 		n1.addProperty("Type", "Video");
 		n1.addProperty("Title", "DBMS Storage");
 
-		GraphNode n2 = new GraphNode(builder);
-		n2.addLabel("SlideResource");
+		GraphNode n2 = new GraphNode(builder, "SlideResource");
 		n2.addProperty("Idslide", "19");
 		n2.addProperty("Type", "Slide");
 		n2.addProperty("Title", "Introduction to DBMS");

@@ -22,7 +22,7 @@ public class GraphCreationExample {
 		 * current options
 		 * */
 
-		GraphNode n1 = new GraphNode(builder);
+		GraphNode n1 = new GraphNode(builder, "person");
 		n1.addLabel("person");
 		n1.addProperty("name", "Asdrubal");
 		n1.addProperty("dob", "27-auf-1987");

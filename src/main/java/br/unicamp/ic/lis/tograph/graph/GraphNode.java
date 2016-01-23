@@ -16,8 +16,8 @@ public class GraphNode extends GraphElement {
 
 	}
 
-	public GraphNode(IGraphBuilder builder) throws Exception {
-		super(builder.createNode(null).getUri(), null, builder);
+	public GraphNode(IGraphBuilder builder, String label) throws Exception {
+		super(builder.createNode(label).getUri(), null, builder);
 
 	}
 
