@@ -16,7 +16,7 @@ public class GraphCreationSimpleExample {
 		builder.testServer(true);
 
 		// /* Creating Nodes */
-		GraphNode n1 = new GraphNode(builder, "VideoResource");
+		GraphNode n1 = new GraphNode(builder, "TestRelation");
 		n1.addProperty("Idvideo", "1");
 		n1.addProperty("Type", "Video");
 		n1.addProperty("Title", "DBMS Storage");

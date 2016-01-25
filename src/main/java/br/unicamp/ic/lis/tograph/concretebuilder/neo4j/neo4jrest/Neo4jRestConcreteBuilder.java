@@ -1,11 +1,12 @@
 package br.unicamp.ic.lis.tograph.concretebuilder.neo4j.neo4jrest;
 
-import java.awt.PageAttributes.MediaType;
 import java.net.ConnectException;
 import java.net.URI;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+
+import javax.ws.rs.core.MediaType;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,7 +23,6 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.filter.HTTPBasicAuthFilter;
-import com.sun.jersey.core.header.MediaTypes;
 
 public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 
@@ -86,11 +86,11 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return response.getStatus();
 	}
 
-	private ClientResponse executeGetJson(String entryPoint, String jason) throws ConnectException {
+	private ClientResponse executeGetJson(String entryPoint, String json) throws ConnectException {
 		this.webResource = Client.create().resource(entryPoint);
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
-		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).get(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		if (this.debubMessage)
 			System.out.println(String.format("GET on [%s], status code [%d]", this.serverRootUrl, response.getStatus()));
 
@@ -99,11 +99,11 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return response;
 	}
 
-	private ClientResponse executeDeleteJson(String entryPoint, String jason) throws ConnectException {
+	private ClientResponse executeDeleteJson(String entryPoint, String json) throws ConnectException {
 		this.webResource = Client.create().resource(entryPoint);
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
-		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).delete(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).delete(ClientResponse.class);
 		if (this.debubMessage)
 			System.out.println(String.format("DELETE on [%s], status code [%d]", this.serverRootUrl, response.getStatus()));
 
@@ -112,13 +112,13 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return response;
 	}
 
-	private ClientResponse executePostJson(String entryPoint, String jason) {
+	private ClientResponse executePostJson(String entryPoint, String json) {
 
 		this.webResource = Client.create().resource(entryPoint);
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
 		// POST {arguments} to the node entry point URI
-		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).type(MediaTypes.WADL_JSON).entity(jason).post(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).entity(json).post(ClientResponse.class);
 
 		URI location = response.getLocation();
 
@@ -138,10 +138,10 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		JSONObject obj = new JSONObject();
 		obj.put("query", cypher);
 
-		String jason = obj.toJSONString();
+		String json = obj.toJSONString();
 
 		// POST {arguments} to the node entry point URI
-		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).type(MediaTypes.WADL_JSON).entity(jason).post(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).entity(json).post(ClientResponse.class);
 
 		URI location = response.getLocation();
 
@@ -153,12 +153,12 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 
 	}
 
-	private ClientResponse executePutJson(String entryPoint, String jason) {
+	private ClientResponse executePutJson(String entryPoint, String json) {
 		this.webResource = Client.create().resource(entryPoint);
 		this.webResource.addFilter(this.httpBasicAuthFilter);
 
 		// POST {arguments} to the node entry point URI
-		ClientResponse response = this.webResource.accept(MediaTypes.WADL_JSON).type(MediaTypes.WADL_JSON).entity(jason).put(ClientResponse.class);
+		ClientResponse response = this.webResource.accept(javax.ws.rs.core.MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON).entity(json).put(ClientResponse.class);
 
 		URI location = response.getLocation();
 
@@ -235,12 +235,14 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 	}
 
 	public boolean addProperty(GraphElement element, GraphElementProperty property) throws Exception {
+
 		if (property.isValueFloat())
 			this.executePutJson(element.getUri() + "/properties/" + property.getKey(), "" + property.getValueFloat() + "");
 		else
 			this.executePutJson(element.getUri() + "/properties/" + property.getKey(), "\"" + property.getValue() + "\"");
 
 		return true;
+
 	}
 
 	@Override
@@ -278,7 +280,6 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return props;
 	}
 
-	
 	public List<GraphNode> getNodesByProperties(List<GraphElementProperty> properties) throws Exception {
 
 		List<GraphNode> list = new Vector<GraphNode>();
@@ -313,7 +314,6 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	
 	public List<GraphNode> getNodesByLabel(String label) throws Exception {
 
 		List<GraphNode> list = new Vector<GraphNode>();
@@ -342,7 +342,6 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	
 	public List<GraphRelation> getRelationsByProperties(List<GraphElementProperty> properties) throws Exception {
 
 		List<GraphRelation> list = new Vector<GraphRelation>();
@@ -376,7 +375,6 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	
 	public List<GraphRelation> getRelationsByLabel(String label) throws Exception {
 
 		List<GraphRelation> list = new Vector<GraphRelation>();
@@ -548,7 +546,6 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return list;
 	}
 
-	
 	public boolean deleteGraphElement(GraphElement element) throws Exception {
 		if (this.debubMessage)
 			System.out.println(element.getUri());
