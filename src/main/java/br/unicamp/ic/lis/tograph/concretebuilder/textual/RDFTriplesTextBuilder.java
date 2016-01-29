@@ -63,12 +63,6 @@ public class RDFTriplesTextBuilder implements IGraphBuilder {
 	}
 
 	@Override
-	public boolean setProperties(GraphElement element, List<GraphElementProperty> properties) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public GraphElementProperties getProperties(GraphElement element) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
@@ -142,7 +136,22 @@ public class RDFTriplesTextBuilder implements IGraphBuilder {
 	}
 
 	@Override
-	public boolean setroperty(GraphElement element, GraphElementProperty property) throws Exception {
+	public GraphNode createNode(String label, GraphElementProperties properties)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean setProperty(GraphElement element,
+			GraphElementProperty property) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean setProperties(GraphElement element,
+			GraphElementProperties properties) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}

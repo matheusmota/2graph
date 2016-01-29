@@ -45,7 +45,7 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		this.nodeLabelsEntryPointUriAppendex = "/labels";
 
 	}
-
+	
 	public boolean isDebubMessage() {
 		return debubMessage;
 	}
@@ -163,7 +163,7 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		URI location = response.getLocation();
 
 		if (this.debubMessage)
-			System.out.println(String.format("Put to [%s], status code [%d]", entryPoint, response.getStatus()));
+			System.out.println(String.format("PUT to [%s], status code [%d]", entryPoint, response.getStatus()));
 
 		this.webResource = null;
 		return response;
@@ -195,7 +195,6 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 			newNode = new GraphNode(newNodeUri, label, this);
 
 		if (label != null) {
-
 			label = label.trim();
 			if (!label.equals(""))
 				this.addLabel(newNode, label);
@@ -246,7 +245,7 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 	}
 
 	@Override
-	public boolean setProperties(GraphElement element, List<GraphElementProperty> properties) throws Exception {
+	public boolean setProperties(GraphElement element, GraphElementProperties properties) throws Exception {
 
 		JSONObject jsonObj = new JSONObject();
 
@@ -274,7 +273,7 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		for (Iterator iterator = jsonObject.keySet().iterator(); iterator.hasNext();) {
 			String key = (String) iterator.next();
 			String value = (String) jsonObject.get(key);
-			props.put(key, value);
+			props.insertProperty(key, value);
 		}
 
 		return props;
@@ -559,16 +558,25 @@ public class Neo4jRestConcreteBuilder implements IGraphBuilder {
 		return null;
 	}
 
+	public boolean addProperties(GraphElement element, GraphElementProperties properties) throws Exception {
+		for (GraphElementProperty property : properties) {
+			addProperty(element, property);
+		}
+		return true;
+	}
+
 	@Override
-	public boolean addProperties(GraphElement element, GraphElementProperties property) throws Exception {
+	public boolean setProperty(GraphElement element, GraphElementProperty property) throws Exception {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
-	public boolean setroperty(GraphElement element, GraphElementProperty property) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+	public GraphNode createNode(String label, GraphElementProperties properties) throws Exception {
+		GraphNode newNode = createNode(label);
+		for (GraphElementProperty property : properties) {
+			addProperty(newNode, property);
+		}
+		return null;
 	}
 
 }

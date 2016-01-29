@@ -3,13 +3,15 @@
  */
 package br.unicamp.ic.lis.tograph.graph;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * @author Matheus Mota
  *
  */
-public class GraphElementProperty extends LinkedHashMap<String, String> {
+public class GraphElementProperty implements Map.Entry<String, String>{
 
 	private String key;
 	private String value;
@@ -39,6 +41,11 @@ public class GraphElementProperty extends LinkedHashMap<String, String> {
 	public String getValue() {
 		return value;
 	}
+	
+	public String setValue(String value) {
+		//this.value = value;
+		return this.value;
+	}
 
 	public String getKey() {
 		return key;
@@ -48,5 +55,4 @@ public class GraphElementProperty extends LinkedHashMap<String, String> {
 		return this.key + " =  \"" + this.value + "\"";
 
 	}
-
 }

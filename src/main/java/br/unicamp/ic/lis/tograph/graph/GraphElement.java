@@ -33,8 +33,7 @@ public class GraphElement {
 		return this.builder.getLabels(this).get(0);
 	}
 
-	public void setProperties(List<GraphElementProperty> properties) throws Exception {
-
+	public void setProperties(GraphElementProperties properties) throws Exception {
 		this.builder.setProperties(this, properties);
 	}
 

@@ -11,12 +11,14 @@ import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 /**
  * To do: add exceptions
  * 
- * @author Matheus
+ * @author Matheus, Victor
  */
 public interface IGraphBuilder {
 
 	public GraphNode createNode(String label) throws Exception;
 
+	public GraphNode createNode(String label, GraphElementProperties properties) throws Exception;
+	
 	public List<GraphRelation> getNodeRelations(GraphNode node) throws Exception;
 	
 	public List<GraphRelation> getNodeInRelations(GraphNode node) throws Exception;
@@ -37,9 +39,9 @@ public interface IGraphBuilder {
 
 	public boolean addProperties(GraphElement element, GraphElementProperties property) throws Exception;
 
-	public boolean setroperty(GraphElement element, GraphElementProperty property) throws Exception;
+	public boolean setProperty(GraphElement element, GraphElementProperty property) throws Exception;
 
-	public boolean setProperties(GraphElement element, List<GraphElementProperty> properties) throws Exception;
+	public boolean setProperties(GraphElement element, GraphElementProperties properties) throws Exception;
 
 	public GraphElementProperties getProperties(GraphElement element) throws Exception;
 

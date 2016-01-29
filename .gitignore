@@ -1,2 +1,6 @@
 *.tmp
 *.directory
+
+target/*
+.classpath
+.project
