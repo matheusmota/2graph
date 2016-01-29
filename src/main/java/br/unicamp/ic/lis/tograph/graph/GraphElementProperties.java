@@ -44,4 +44,9 @@ public class GraphElementProperties extends ArrayList<GraphElementProperty>  {
 	{
 		this.add(new GraphElementProperty(key, value));
 	}
+	
+	public void insertProperty(GraphElementProperty property)
+	{
+		this.add(property);
+	}
 }

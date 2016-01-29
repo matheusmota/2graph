@@ -8,15 +8,29 @@ import br.unicamp.ic.lis.tograph.graph.GraphElementProperty;
 import br.unicamp.ic.lis.tograph.graph.GraphNode;
 import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 
+//TODO add Exceptions
+
 /**
- * To do: add exceptions
- * 
- * @author Matheus, Victor
+ * Interface for building graphs
+ * @author Matheus, labrax
+ *
  */
 public interface IGraphBuilder {
-
+	/**
+	 * Create a node in the database
+	 * @param label is the label on the database
+	 * @return the created node
+	 * @throws Exception
+	 */
 	public GraphNode createNode(String label) throws Exception;
 
+	/**
+	 * Create a node in the database with properties
+	 * @param label is the label on the database
+	 * @param properties are the properties
+	 * @return the created node
+	 * @throws Exception
+	 */
 	public GraphNode createNode(String label, GraphElementProperties properties) throws Exception;
 	
 	public List<GraphRelation> getNodeRelations(GraphNode node) throws Exception;
@@ -25,6 +39,14 @@ public interface IGraphBuilder {
 	
 	public List<GraphRelation> getNodeOutRelations(GraphNode node) throws Exception;
 
+	/**
+	 * Create a relation between two nodes on the database
+	 * @param startNode the origin node
+	 * @param label the label for the relationship
+	 * @param endNode the destination node
+	 * @return the created relation
+	 * @throws Exception
+	 */
 	public GraphRelation createRelation(GraphNode startNode, String label, GraphNode endNode) throws Exception;
 
 	public GraphNode getStartNodeOfRelation(GraphRelation relation) throws Exception;
@@ -35,9 +57,23 @@ public interface IGraphBuilder {
 
 	public List<String> getLabels(GraphElement element) throws Exception;
 
+	/**
+	 * Insert a property in an element
+	 * @param element is the graph element
+	 * @param property is the property
+	 * @return true if successful 
+	 * @throws Exception if failed
+	 */
 	public boolean addProperty(GraphElement element, GraphElementProperty property) throws Exception;
 
-	public boolean addProperties(GraphElement element, GraphElementProperties property) throws Exception;
+	/**
+	 * Insert multiple properties in an element
+	 * @param element is the graph element
+	 * @param properties are the properties
+	 * @return true if successful
+	 * @throws Exception if failed
+	 */
+	public boolean addProperties(GraphElement element, GraphElementProperties properties) throws Exception;
 
 	public boolean setProperty(GraphElement element, GraphElementProperty property) throws Exception;
 

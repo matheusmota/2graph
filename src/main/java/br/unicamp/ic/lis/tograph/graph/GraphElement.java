@@ -13,7 +13,6 @@ public class GraphElement {
 	public GraphElement(URI uri, String label, IGraphBuilder builder) {
 		this.uri = uri;
 		this.builder = builder;
-
 	}	
 
 	private void setLabel(String label) throws Exception {
@@ -22,7 +21,6 @@ public class GraphElement {
 
 	public GraphElementProperties getProperties() throws Exception {
 		return this.builder.getProperties(this);
-
 	}
 
 	public IGraphBuilder getBuilder() {
@@ -44,7 +42,6 @@ public class GraphElement {
 	public boolean addProperty(GraphElementProperty prop) throws Exception {
 		this.getBuilder().addProperty(this, prop);
 		return true;
-
 	}
 
 	public boolean addProperty(String key, String value) throws Exception {
