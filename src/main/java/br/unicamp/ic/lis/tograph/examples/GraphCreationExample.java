@@ -8,9 +8,9 @@ import br.unicamp.ic.lis.tograph.graph.GraphRelation;
 public class GraphCreationExample {
 	public static void main(String[] args) throws Exception {
 
-		String serverRootUrl = "http://neo4j.lis.ic.unicamp.br/db/data";
+		String serverRootUrl = "http://127.0.0.1:7474/db/data";
 
-		Neo4jRestConcreteBuilder builder = new Neo4jRestConcreteBuilder(serverRootUrl, "neo4j", "neo4j");
+		Neo4jRestConcreteBuilder builder = new Neo4jRestConcreteBuilder(serverRootUrl, "neo4j", "123");
 		// RDFTriplesBuilder builder = new RDFTriplesBuilder(serverRootUrl);
 
 		builder.setDebubMessage(true);

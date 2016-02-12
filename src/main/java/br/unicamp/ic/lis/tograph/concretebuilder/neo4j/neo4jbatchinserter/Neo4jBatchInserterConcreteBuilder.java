@@ -4,7 +4,6 @@ import java.io.File;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.neo4j.graphdb.DynamicLabel;
 import org.neo4j.graphdb.DynamicRelationshipType;
@@ -137,7 +136,7 @@ public class Neo4jBatchInserterConcreteBuilder extends IGraphDatabase implements
 
 	public GraphNode createNode(String label, GraphElementProperties properties) throws Exception
 	{
-		Map<String, Object> nodeProperties = new HashMap<>();
+		HashMap<String, Object> nodeProperties = new HashMap<String, Object>();
 		for(GraphElementProperty property : properties)
 		{
 			nodeProperties.put(property.getKey(), property.getValue());
