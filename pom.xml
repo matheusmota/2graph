@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>br.unicamp.ic.lis.tograph</groupId>
-  <artifactId>tograph</artifactId>
+  <artifactId>2graph</artifactId>
   <packaging>jar</packaging>
   <version>0.1.2</version>
   <name>tograph</name>
@@ -24,13 +24,27 @@
     <dependency>
     	<groupId>org.neo4j</groupId>
     	<artifactId>neo4j-lucene-index</artifactId>
-    	<version>2.3.2</version>
+    	<version>3.0.4</version>
     </dependency>
     
     <dependency>
     	<groupId>org.neo4j</groupId>
     	<artifactId>neo4j-kernel</artifactId>
     	<version>3.0.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>br.unicamp.ic.lis.ddex</groupId>
+      <artifactId>ddex</artifactId>
+      <version>2.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/java/ddex-2.0.1.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.14</version>
     </dependency>
 
 

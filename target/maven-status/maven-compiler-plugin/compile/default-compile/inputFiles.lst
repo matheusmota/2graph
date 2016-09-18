@@ -1,0 +1,16 @@
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/examples/GraphUpdateExample.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/examples/GraphCreationBatchInserterExample.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/examples/GraphCreationSimpleExample.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/examples/GraphCreationExampleUpdates.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/graph/GraphElementProperties.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/graph/GraphNode.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/graph/GraphRelation.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/concretebuilder/textual/RDFTriplesTextBuilder.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/concretebuilder/neo4j/neo4jrest/Neo4jRestConcreteBuilder.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/graph/GraphElementProperty.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/examples/GraphCreationExample.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/graph/GraphElement.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/util/cypher/CypherUtil.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/builder/IGraphDatabase.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/concretebuilder/neo4j/neo4jbatchinserter/Neo4jBatchInserterConcreteBuilder.java
+/home/matheus/git/github/2graph/src/main/java/br/unicamp/ic/lis/tograph/builder/IGraphBuilder.java
