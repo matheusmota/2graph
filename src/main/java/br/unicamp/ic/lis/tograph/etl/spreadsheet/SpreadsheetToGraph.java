@@ -1,9 +1,5 @@
 package br.unicamp.ic.lis.tograph.etl.spreadsheet;
 
-import java.net.ConnectException;
-
-import org.neo4j.kernel.api.properties.Property;
-
 import br.unicamp.ic.lis.ddex.spreadsheet.Cell;
 import br.unicamp.ic.lis.ddex.spreadsheet.Column;
 import br.unicamp.ic.lis.ddex.spreadsheet.Row;
@@ -72,22 +68,17 @@ public class SpreadsheetToGraph implements ISpreadsheetBuilder {
 
 			String mimePropertyValue = "Unknow";
 
-			switch (this.fileExtension) {
-
-			case "csv":
+			if (this.fileExtension.equals("csv")) {
+				
 				mimePropertyValue = "txt/csv";
-				break;
+			
+			} else if (this.fileExtension.equals("xls")) {
 
-			case "xls":
 				mimePropertyValue = "application/vnd.ms-excel";
-				break;
+			
+			} else if (this.fileExtension.equals("xlsx")) {
 
-			case "xlsx":
 				mimePropertyValue = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-				break;
-
-			default:
-				break;
 			}
 
 			this.builder.addProperty(this.resourceNode, new GraphElementProperty("ls_mime", mimePropertyValue));
@@ -190,8 +181,9 @@ public class SpreadsheetToGraph implements ISpreadsheetBuilder {
 			this.builder.addProperty(this.lastRowNode, new GraphElementProperty("ls_version", "1"));
 			this.builder.addProperty(this.lastRowNode, new GraphElementProperty("ls_parsed", "0"));
 			this.builder.addProperty(this.lastRowNode, new GraphElementProperty("ls_label", "trajectory"));
-			this.builder.addProperty(this.resourceRepresentationNode, new GraphElementProperty("ls_associatedRID", this.objectuuid));
-			
+			this.builder.addProperty(this.resourceRepresentationNode,
+					new GraphElementProperty("ls_associatedRID", this.objectuuid));
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 
