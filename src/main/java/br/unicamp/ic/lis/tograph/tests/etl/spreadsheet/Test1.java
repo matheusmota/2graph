@@ -13,11 +13,11 @@ public class Test1 {
 	public static void main(String[] args) {
 
 		String neo4juri = "http://localhost:7474/db/data";
-		String csvFolderPath = "/home/matheus/temp/misc/csv/";
+		String csvFolderPath = "/home/matheus/temp/misc/xls/";
 		String extension = ".xls";
 
 		Neo4jRestConcreteBuilder neo4j = new Neo4jRestConcreteBuilder(neo4juri, "neo4j", "neo4j");
-		neo4j.setDebubMessage(false);
+		neo4j.setDebubMessage(true);
 
 		try {
 			String fileName;
